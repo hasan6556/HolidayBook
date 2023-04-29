@@ -169,41 +169,18 @@ public class ReusableMethods {
         }
     }
 
-    public static void userLogIn(String mail, String password) throws InterruptedException {
+    public static void userLogIn(String mail, String password) {
 
         Driver.getDriver().get(ConfigReader.getProperty("Url"));
-        Driver.getDriver().findElement(By.xpath("//*[@data-testid=\"header-sign-in-button\"]")).click();
-        Driver.getDriver().findElement(By.xpath("//*[@name=\"username\"]")).sendKeys(mail);
+        Driver.getDriver().findElement(By.xpath("(//*[text()=\" Giriş Yapın \"])[1]")).click();
         ReusableMethods.pleaseWait(2);
-        Driver.getDriver().findElement(By.xpath("//*[@type=\"submit\"]")).click();
-        ReusableMethods.pleaseWait(2);
+        Driver.getDriver().findElement(By.xpath("//*[@name=\"email\"]")).sendKeys(mail);
+        ReusableMethods.pleaseWait(1);
         Driver.getDriver().findElement(By.xpath("//*[@name=\"password\"]")).sendKeys(password);
         ReusableMethods.pleaseWait(1);
-        Driver.getDriver().findElement(By.xpath("//*[@type=\"submit\"]")).click();
-        pleaseWait(2);
-        //ReusableMethods.jsMouesDown(Driver.getDriver().findElement(By.xpath("//*[@style=\"animation: 28.9ms ease 0s 1 normal none running textColorIReverse;\"]")));
-        //Actions action = new Actions(Driver.getDriver());
-        //action.clickAndHold(Driver.getDriver().findElement(By.xpath("//*[text()=\"Güvenlik kontrolünü geçmek için bu butonu basılı tutun\"]"))).perform();
-        //action.release().perform();
-        //WebElement button = Driver.getDriver().findElement(By.xpath("//*[text()=\\\"Güvenlik kontrolünü geçmek için bu butonu basılı tutun\\\"]")); // Butonu bulun
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver(); // JavascriptExecutor örneği oluşturun
-
-       // Butonun üzerine gelin ve basılı tutun
-        String script = "var element = arguments[0];" + "var mouseEventObj = document.createEvent('MouseEvents');" + "mouseEventObj.initEvent( 'mousedown', true, true );" + "element.dispatchEvent(mouseEventObj);";
-        js.executeScript(script, Driver.getDriver().findElement(By.xpath("//*[@style=\"animation: 28.9ms ease 0s 1 normal none running textColorIReverse;\"]")));
-
-        // Gösterge dolana kadar bekleyin
-        Thread.sleep(5000); // 5 saniye bekleyin (gösterge dolu olana kadar)
-
-        // Basılı tutmayı bırakın
-        script = "var element = arguments[0];" + "var mouseEventObj = document.createEvent('MouseEvents');" + "mouseEventObj.initEvent( 'mouseup', true, true );" + "element.dispatchEvent(mouseEventObj);";
-        js.executeScript(script, Driver.getDriver().findElement(By.xpath("//*[@style=\"animation: 28.9ms ease 0s 1 normal none running textColorIReverse;\"]")));
+        Driver.getDriver().findElement(By.xpath("(//*[@type=\"submit\"])[2]")).click();
+        ReusableMethods.pleaseWait(2);
 
     }
 
-
-    public static void jsMouesDown(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("arguments[0].mousedown();", element);
-    }
 }

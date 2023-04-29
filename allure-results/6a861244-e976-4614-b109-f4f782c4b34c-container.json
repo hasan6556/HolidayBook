@@ -1,0 +1,1 @@
+{"uuid":"6a861244-e976-4614-b109-f4f782c4b34c","name":"Scenario: TC_03  When a search is made with the search boxes and search button is pressed,it is confirmed that the desired results are listed.","children":["5c45a3f6-1968-4202-9c54-29bb8b177152"],"befores":[],"afters":[],"start":1682779114522,"stop":1682779147208}

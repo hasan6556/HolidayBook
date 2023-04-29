@@ -1,0 +1,1 @@
+{"uuid":"48c451bf-2ca6-4bca-a2b7-a30e81c0a375","name":"Scenario: TC_04  when the desired holiday is selected and clicked on, it is confirmed that the new page opens.","children":["9ec33f91-8b23-4513-b7d6-4175b34b9689"],"befores":[],"afters":[],"start":1682778879823,"stop":1682778921185}
